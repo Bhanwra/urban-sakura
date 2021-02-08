@@ -100,6 +100,12 @@ if ( ! function_exists( 'sakuratheme_setup' ) ) :
 				'flex-height' => true,
 			)
 		);
+
+		// Adding Support for default block styles
+		add_theme_support( 'wp-block-styles' );
+
+		// Support for wide alignment
+		add_theme_support( 'align-wide' );
 	}
 endif;
 add_action( 'after_setup_theme', 'sakuratheme_setup' );
@@ -178,11 +184,29 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-function sakuratheme_enqueue_block_editor_assets() {
+/**
+ * Loading Custom Block Editor Dependencies
+ */
+
+function sakuratheme_block_editor_assets() {
 	wp_enqueue_script(
 		'editor_script',
-		get_template_directory_uri() . '/assets/js/editor.js'
+		get_template_directory_uri() . '/js/editor.js',
+		array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' )
 	);
 }
 
-add_action('enqueue_block_editor_assets', 'sakuratheme_enqueue_block_editor_assets');
+add_action('enqueue_block_editor_assets', 'sakuratheme_block_editor_assets');
+
+/**
+ * Custom Dependencies
+ */
+
+function sakuratheme_block_assets() {
+	wp_enqueue_style( 
+		'sakura-style', 
+		get_template_directory_uri() . '/css/sakura.css',
+	);
+}
+
+add_action( 'enqueue_block_assets', sakuratheme_block_assets );
