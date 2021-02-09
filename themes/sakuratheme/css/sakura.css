@@ -6,6 +6,17 @@ a:hover {
     color: black !important;
 }
 
+.site {
+    background-color: #f0f0f0;
+}
+
+.site-wrapper {
+    background-color: #f9f9f9;
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    box-shadow: #0004 0 0 3px 0;
+} 
+
 .site-title a {
     text-decoration: none;
 }
@@ -16,10 +27,63 @@ a:hover {
 
 .site-header {
     background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100000;
+    box-shadow: #0004 0 0 3px 0;
+}
+
+.site-header .nav-link:not([href="#"]) {
+    position: relative;
+}
+
+.site-header .nav-link:not([href="#"]):after {
+    content: "";
+    position: absolute;
+    height: 0.1rem;
+    width: 0%;
+    bottom: 0;
+    background-color: #888;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: linear 100ms;
+}
+
+.site-header .nav-link:not([href="#"]):hover:after {
+    width: 90%;
+}
+
+.site-header .nav-link[href="#"] {
+    color: #bbb !important;
+    cursor: not-allowed;
 }
 
 .site-footer {
     padding: 1rem 0 0.5rem;
     background: white;
     margin-top: 1rem;
+    box-shadow: #0004 0 0 3px 0;
+}
+
+.footer-link {
+    text-decoration: none;
+    position: relative;
+}
+
+.footer-link:after {
+    content: "";
+    position: absolute;
+    height: 0.1rem;
+    width: 0%;
+    bottom: 0;
+    background-color: #888;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: linear 100ms;
+}
+
+.footer-link:hover:after {
+    width: 25%;
 }

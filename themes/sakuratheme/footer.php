@@ -23,27 +23,27 @@
 							<h4 class="h5 text-left">Links</h4>
 						</div>
 						<div class="col-4">
-							<a href="" class="d-block py-1">Shipping & Returns</a>
-							<a href="" class="d-block py-1">FAQ</a>
-							<a href="" class="d-block py-1">Trade Program</a>
+							<a href="" class="d-block py-1 footer-link">Shipping & Returns</a>
+							<a href="" class="d-block py-1 footer-link">FAQ</a>
+							<a href="" class="d-block py-1 footer-link">Trade Program</a>
 						</div>
 						<div class="col-4">
-							<a href="" class="d-block py-1">Contact</a>
-							<a href="" class="d-block py-1">About</a>
-							<a href="" class="d-block py-1">Events</a>
+							<a href="" class="d-block py-1 footer-link">Contact</a>
+							<a href="" class="d-block py-1 footer-link">About</a>
+							<a href="" class="d-block py-1 footer-link">Events</a>
 						</div>
 						<div class="col-4">
-							<a href="" class="d-block py-1">Careers</a>
-							<a href="" class="d-block py-1">Story</a>
-							<a href="" class="d-block py-1">COVID-19</a>
+							<a href="" class="d-block py-1 footer-link">Careers</a>
+							<a href="" class="d-block py-1 footer-link">Story</a>
+							<a href="" class="d-block py-1 footer-link">COVID-19</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-12 col-md-4 text-center">
 					<h4 class="h5 text-left">Social</h4>
-					<a href="" class="d-block py-1">Facebook</a>
-					<a href="" class="d-block py-1">Twitter</a>
-					<a href="" class="d-block py-1">Instagram</a>
+					<a href="" class="d-block py-1 footer-link">Facebook</a>
+					<a href="" class="d-block py-1 footer-link">Twitter</a>
+					<a href="" class="d-block py-1 footer-link">Instagram</a>
 				</div>
 			</div>
 			<div class="row mt-2">

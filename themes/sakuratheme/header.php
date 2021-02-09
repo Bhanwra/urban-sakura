@@ -82,4 +82,4 @@
 		<!-- #site-navigation -->
 	</header><!-- #masthead -->
 
-<div class="container">
+<div class="container site-wrapper">
