@@ -1,0 +1,13 @@
+.wp-block-code {
+    border-radius: 0;
+
+    code {
+        @extend %font-code;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+}
+
+.wp-block-preformatted {
+    padding: 1rem;
+}

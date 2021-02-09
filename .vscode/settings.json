@@ -1,0 +1,15 @@
+{
+    "liveSassCompile.settings.formats": [
+
+        {
+            "format": "compact",
+            "extensionName": ".css",
+            "savePath": "/themes/sakuratheme/css"
+        }
+    ],
+    "liveSassCompile.settings.includeItems": [
+        "/themes/sakuratheme/scss/*",
+        "/themes/sakuratheme/scss/main.scss"
+
+    ]
+}

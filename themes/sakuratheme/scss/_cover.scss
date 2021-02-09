@@ -1,0 +1,18 @@
+.wp-block-cover-image.has-background-dim:not(.has-background-gradient):before, .wp-block-cover-image .wp-block-cover__gradient-background, .wp-block-cover.has-background-dim:not(.has-background-gradient):before, .wp-block-cover .wp-block-cover__gradient-background {
+    display: none;
+}
+
+.wp-block-cover {
+
+    .wp-block-cover__inner-container {
+        width: 100%;
+        z-index: 1;
+        color: #fff;
+        background: #fffa;
+        color: black;
+        backdrop-filter: blur(10px);
+        padding: 5rem;
+        margin: 5rem;
+        box-shadow: #0003 0px 0px 3px 0px;
+    }
+}

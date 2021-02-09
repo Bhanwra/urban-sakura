@@ -1,0 +1,87 @@
+.wp-block-quote {
+    border: transparent;
+    position: relative;
+
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0.24rem;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        width: 1px;
+        background-color: gainsboro;
+    }
+
+    p {
+        font-size: 1.75rem;
+        text-align: center;
+
+        &:before, &:after {
+            content: "\"";
+            font-size: 3rem;
+            color: gainsboro;
+        }
+    }
+
+    cite {
+        display: block;
+        text-align: right;
+        padding: 0 2rem;
+        font-size: 1rem;
+
+        @extend %font-alt;
+
+        &:before {
+            content: "-";
+        }
+    }
+}
+
+.wp-block-pullquote {
+    border: transparent;
+    margin: 2rem 0;
+    position: relative;
+
+    &:before, &:after {
+        content: "";
+        position: absolute;
+        border: solid thin gainsboro;
+        width: 25%;
+        height: 25%;
+    }
+
+    &:before {
+        left: 0;
+        top: 0;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    &:after {
+        right: 0;
+        bottom: 0;
+        border-left: none;
+        border-top: none;
+    }
+
+    blockquote {
+
+        cite {
+
+            strong {
+                font-size: 1rem;
+                text-transform: capitalize;
+                text-align: right;
+                display: block;
+                padding: 0 2rem;
+                font-weight: normal;
+                @extend %font-alt;
+
+                &:before {
+                    content: "-";
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,81 @@
+.wp-block-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wp-block-file {
+    padding: 1rem;
+    background: white;
+    margin: 1rem 0;
+    box-shadow: #0003 0 0 3px 0;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        text-decoration: none;
+    }
+
+    .wp-block-file__button {
+        color: white !important;
+        margin: 0.5rem 0 0 0;
+        border-radius: 0;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+}
+
+.wp-block-latest-comments {
+    background-color: white;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    box-shadow: #0003 0 0 3px 0;
+
+    .wp-block-latest-comments__comment,
+    .wp-block-latest-comments__comment-excerpt p {
+        margin-bottom: 0;
+    }
+}
+
+.wp-block-search {
+    .wp-block-search__label {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: block;
+        text-align: center;
+        @extend %font-alt;
+        font-weight: normal;
+    }
+
+    .wp-block-search__inside-wrapper {
+        background: white;
+        border: solid thin lightgrey;
+        
+        input, button {
+            background-color: transparent;
+            border-color: transparent;
+            color: black;
+            outline: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        input {
+            padding: 0 0.5rem;
+        }
+    }
+}
+
+.wp-block-media-text {
+    
+    .wp-block-media-text__content {
+        .has-large-font-size {
+            text-transform: uppercase;
+            font-size: 1.75rem;
+            letter-spacing: 3px;
+            @extend %font-alt;
+        }
+    }
+}

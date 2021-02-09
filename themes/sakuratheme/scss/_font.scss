@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+
+* {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.font-alt {
+    font-family: 'Playfair Display', serif !important;
+}
+
+%font-alt {
+    font-family: 'Playfair Display', serif !important;
+}
+
+.font-code {
+    font-family: 'Nanum Gothic Coding', monospace !important;
+}
+
+%font-code {
+    font-family: 'Nanum Gothic Coding', monospace !important;
+}
+

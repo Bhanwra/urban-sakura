@@ -1,0 +1,17 @@
+@import 'variables';
+@import 'font';
+@import 'paragraph';
+@import 'heading';
+@import 'list';
+@import 'blockquote';
+@import 'code';
+@import 'table';
+@import 'misc';
+@import 'cover';
+@import 'button';
+
+
+.page {
+    background-color: #f9f9f9;
+    margin-bottom: 0;
+}

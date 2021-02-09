@@ -1,0 +1,14 @@
+h {
+    @for $var from 1 through 6 {
+        &#{$var} {
+            text-transform: uppercase;
+            font-weight: lighter;
+            letter-spacing: 5px;
+            text-align: center;
+            display: block;
+            margin-bottom: 1.5rem;
+            
+            @extend %font-alt;
+        }
+    }
+}
