@@ -46,7 +46,7 @@
 							<?php
 						// else :
 							?>
-							<p class="site-title m-0"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="font-alt"><?php bloginfo( 'name' ); ?></a></p>
+							<p class="site-title m-0"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="font-alt h3"><?php bloginfo( 'name' ); ?></a></p>
 							<?php
 						// endif;
 						$sakuratheme_description = get_bloginfo( 'description', 'display' );
