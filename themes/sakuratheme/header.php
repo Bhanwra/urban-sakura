@@ -59,7 +59,7 @@
 				<div class="col-12 col-md-4">
 					<nav class="nav h-100 align-items-center justify-content-end">
 						<a href="<?php echo get_permalink( get_page_by_path( 'about' ) ); ?>" class="nav-link">About</a>
-						<a href="#" class="nav-link">Contact</a>
+						<a href="<?php echo get_permalink( get_page_by_path( 'contact' ) ); ?>" class="nav-link">Contact</a>
 						<a href="#" class="nav-link">Search</a>
 					</nav>
 				</div>
