@@ -60,6 +60,7 @@
 					<nav class="nav h-100 align-items-center justify-content-end">
 						<a href="<?php echo get_permalink( get_page_by_path( 'about' ) ); ?>" class="nav-link">About</a>
 						<a href="<?php echo get_permalink( get_page_by_path( 'contact' ) ); ?>" class="nav-link">Contact</a>
+						<a class="cart nav-link" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> – <?php echo WC()->cart->get_cart_total(); ?></a>
 						<a href="#" class="nav-link">Search</a>
 					</nav>
 				</div>

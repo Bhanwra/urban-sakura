@@ -16,7 +16,9 @@ import {
 	ProductSaleBadge,
 } from '@woocommerce/base-components/cart-checkout';
 import { getCurrency } from '@woocommerce/price-format';
+import { __experimentalApplyCheckoutFilter } from '@woocommerce/blocks-checkout';
 import Dinero from 'dinero.js';
+import { DISPLAY_CART_PRICES_INCLUDING_TAX } from '@woocommerce/block-settings';
 
 /**
  * @typedef {import('@woocommerce/type-defs/cart').CartItem} CartItem
@@ -41,7 +43,7 @@ const getAmountFromRawPrice = ( priceObject, currency ) => {
  */
 const CartLineItemRow = ( { lineItem = {} } ) => {
 	const {
-		name = '',
+		name: initialName = '',
 		catalog_visibility: catalogVisibility = '',
 		short_description: shortDescription = '',
 		description: fullDescription = '',
@@ -71,6 +73,18 @@ const CartLineItemRow = ( { lineItem = {} } ) => {
 				sale_price: '0',
 			},
 		},
+		totals = {
+			currency_code: 'USD',
+			currency_minor_unit: 2,
+			currency_symbol: '$',
+			currency_prefix: '$',
+			currency_suffix: '',
+			currency_decimal_separator: '.',
+			currency_thousand_separator: ',',
+			line_total: '0',
+			line_total_tax: '0',
+		},
+		extensions,
 	} = lineItem;
 
 	const {
@@ -80,7 +94,18 @@ const CartLineItemRow = ( { lineItem = {} } ) => {
 		isPendingDelete,
 	} = useStoreCartItemQuantity( lineItem );
 
-	const currency = getCurrency( prices );
+	const priceCurrency = getCurrency( prices );
+
+	const name = __experimentalApplyCheckoutFilter( {
+		filterName: 'itemName',
+		defaultValue: initialName,
+		arg: {
+			extensions,
+			context: 'cart',
+		},
+		validation: ( value ) => typeof value === 'string',
+	} );
+
 	const regularAmountSingle = Dinero( {
 		amount: parseInt( prices.raw_prices.regular_price, 10 ),
 		precision: parseInt( prices.raw_prices.precision, 10 ),
@@ -89,15 +114,56 @@ const CartLineItemRow = ( { lineItem = {} } ) => {
 		amount: parseInt( prices.raw_prices.price, 10 ),
 		precision: parseInt( prices.raw_prices.precision, 10 ),
 	} );
-	const regularAmount = regularAmountSingle.multiply( quantity );
-	const purchaseAmount = purchaseAmountSingle.multiply( quantity );
 	const saleAmountSingle = regularAmountSingle.subtract(
 		purchaseAmountSingle
 	);
-	const saleAmount = regularAmount.subtract( purchaseAmount );
+	const saleAmount = saleAmountSingle.multiply( quantity );
+	const totalsCurrency = getCurrency( totals );
+	let lineTotal = parseInt( totals.line_total, 10 );
+	if ( DISPLAY_CART_PRICES_INCLUDING_TAX ) {
+		lineTotal += parseInt( totals.line_total_tax, 10 );
+	}
+	const totalsPrice = Dinero( {
+		amount: lineTotal,
+	} );
+
 	const firstImage = images.length ? images[ 0 ] : {};
 	const isProductHiddenFromCatalog =
 		catalogVisibility === 'hidden' || catalogVisibility === 'search';
+
+	// Allow extensions to filter how the price is displayed. Ie: prepending or appending some values.
+	const productPriceFormat = __experimentalApplyCheckoutFilter( {
+		filterName: 'cartItemPrice',
+		defaultValue: '<price/>',
+		arg: {
+			cartItem: lineItem,
+			block: 'cart',
+		},
+		validation: ( value ) =>
+			typeof value === 'string' && value.includes( '<price/>' ),
+	} );
+
+	const subtotalPriceFormat = __experimentalApplyCheckoutFilter( {
+		filterName: 'subtotalPriceFormat',
+		defaultValue: '<price/>',
+		arg: {
+			lineItem,
+		},
+		// Only accept strings.
+		validation: ( value ) =>
+			typeof value === 'string' && value.includes( '<price/>' ),
+	} );
+
+	const saleBadgePriceFormat = __experimentalApplyCheckoutFilter( {
+		filterName: 'saleBadgePriceFormat',
+		defaultValue: '<price/>',
+		arg: {
+			lineItem,
+		},
+		// Only accept strings.
+		validation: ( value ) =>
+			typeof value === 'string' && value.includes( '<price/>' ),
+	} );
 
 	return (
 		<tr
@@ -137,24 +203,26 @@ const CartLineItemRow = ( { lineItem = {} } ) => {
 
 				<div className="wc-block-cart-item__prices">
 					<ProductPrice
-						currency={ currency }
+						currency={ priceCurrency }
 						regularPrice={ getAmountFromRawPrice(
 							regularAmountSingle,
-							currency
+							priceCurrency
 						) }
 						price={ getAmountFromRawPrice(
 							purchaseAmountSingle,
-							currency
+							priceCurrency
 						) }
+						format={ subtotalPriceFormat }
 					/>
 				</div>
 
 				<ProductSaleBadge
-					currency={ currency }
+					currency={ priceCurrency }
 					saleAmount={ getAmountFromRawPrice(
 						saleAmountSingle,
-						currency
+						priceCurrency
 					) }
+					format={ saleBadgePriceFormat }
 				/>
 
 				<ProductMetadata
@@ -183,17 +251,22 @@ const CartLineItemRow = ( { lineItem = {} } ) => {
 			</td>
 			<td className="wc-block-cart-item__total">
 				<ProductPrice
-					currency={ currency }
-					price={ getAmountFromRawPrice( purchaseAmount, currency ) }
+					currency={ totalsCurrency }
+					format={ productPriceFormat }
+					price={ getAmountFromRawPrice(
+						totalsPrice,
+						totalsCurrency
+					) }
 				/>
 
 				{ quantity > 1 && (
 					<ProductSaleBadge
-						currency={ currency }
+						currency={ priceCurrency }
 						saleAmount={ getAmountFromRawPrice(
 							saleAmount,
-							currency
+							priceCurrency
 						) }
+						format={ saleBadgePriceFormat }
 					/>
 				) }
 			</td>

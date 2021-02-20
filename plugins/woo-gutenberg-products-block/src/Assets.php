@@ -24,6 +24,7 @@ class Assets {
 		add_action( 'body_class', array( __CLASS__, 'add_theme_body_class' ), 1 );
 		add_action( 'admin_body_class', array( __CLASS__, 'add_theme_admin_body_class' ), 1 );
 		add_filter( 'woocommerce_shared_settings', array( __CLASS__, 'get_wc_block_data' ) );
+		add_action( 'woocommerce_login_form_end', array( __CLASS__, 'redirect_to_field' ) );
 	}
 
 	/**
@@ -141,11 +142,12 @@ class Assets {
 		$tag_count      = wp_count_terms( 'product_tag' );
 		$product_counts = wp_count_posts( 'product' );
 		$page_ids       = [
-			'shop'     => wc_get_page_id( 'shop' ),
-			'cart'     => wc_get_page_id( 'cart' ),
-			'checkout' => wc_get_page_id( 'checkout' ),
-			'privacy'  => wc_privacy_policy_page_id(),
-			'terms'    => wc_terms_and_conditions_page_id(),
+			'myaccount' => wc_get_page_id( 'myaccount' ),
+			'shop'      => wc_get_page_id( 'shop' ),
+			'cart'      => wc_get_page_id( 'cart' ),
+			'checkout'  => wc_get_page_id( 'checkout' ),
+			'privacy'   => wc_privacy_policy_page_id(),
+			'terms'     => wc_terms_and_conditions_page_id(),
 		];
 		$checkout       = WC()->checkout();
 
@@ -186,11 +188,12 @@ class Assets {
 				],
 				'homeUrl'                       => esc_url( home_url( '/' ) ),
 				'storePages'                    => [
-					'shop'     => self::format_page_resource( $page_ids['shop'] ),
-					'cart'     => self::format_page_resource( $page_ids['cart'] ),
-					'checkout' => self::format_page_resource( $page_ids['checkout'] ),
-					'privacy'  => self::format_page_resource( $page_ids['privacy'] ),
-					'terms'    => self::format_page_resource( $page_ids['terms'] ),
+					'myaccount' => self::format_page_resource( $page_ids['myaccount'] ),
+					'shop'      => self::format_page_resource( $page_ids['shop'] ),
+					'cart'      => self::format_page_resource( $page_ids['cart'] ),
+					'checkout'  => self::format_page_resource( $page_ids['checkout'] ),
+					'privacy'   => self::format_page_resource( $page_ids['privacy'] ),
+					'terms'     => self::format_page_resource( $page_ids['terms'] ),
 				],
 				'checkoutAllowsGuest'           => $checkout instanceof \WC_Checkout && false === filter_var(
 					$checkout->is_registration_required(),
@@ -216,6 +219,17 @@ class Assets {
 	}
 
 	/**
+	 * Adds a redirect field to the login form so blocks can redirect users after login.
+	 */
+	public static function redirect_to_field() {
+		// phpcs:ignore WordPress.Security.NonceVerification
+		if ( empty( $_GET['redirect_to'] ) ) {
+			return;
+		}
+		echo '<input type="hidden" name="redirect" value="' . esc_attr( esc_url_raw( wp_unslash( $_GET['redirect_to'] ) ) ) . '" />'; // phpcs:ignore WordPress.Security.NonceVerification
+	}
+
+	/**
 	 * Format a page object into a standard array of data.
 	 *
 	 * @param WP_Post|int $page Page object or ID.
@@ -225,7 +239,7 @@ class Assets {
 		if ( is_numeric( $page ) && $page > 0 ) {
 			$page = get_post( $page );
 		}
-		if ( ! is_a( $page, '\WP_Post' ) ) {
+		if ( ! is_a( $page, '\WP_Post' ) || 'publish' !== $page->post_status ) {
 			return [
 				'id'        => 0,
 				'title'     => '',

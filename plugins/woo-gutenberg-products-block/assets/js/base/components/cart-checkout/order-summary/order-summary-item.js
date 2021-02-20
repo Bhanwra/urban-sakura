@@ -6,8 +6,10 @@ import Label from '@woocommerce/base-components/label';
 import ProductPrice from '@woocommerce/base-components/product-price';
 import ProductName from '@woocommerce/base-components/product-name';
 import { getCurrency } from '@woocommerce/price-format';
+import { __experimentalApplyCheckoutFilter } from '@woocommerce/blocks-checkout';
 import PropTypes from 'prop-types';
 import Dinero from 'dinero.js';
+import { DISPLAY_CART_PRICES_INCLUDING_TAX } from '@woocommerce/block-settings';
 
 /**
  * Internal dependencies
@@ -22,7 +24,7 @@ const OrderSummaryItem = ( { cartItem } ) => {
 		images,
 		low_stock_remaining: lowStockRemaining = null,
 		show_backorder_badge: showBackorderBadge = false,
-		name,
+		name: initialName,
 		permalink,
 		prices,
 		quantity,
@@ -30,26 +32,67 @@ const OrderSummaryItem = ( { cartItem } ) => {
 		description: fullDescription,
 		item_data: itemData = [],
 		variation,
+		totals,
+		extensions,
 	} = cartItem;
 
-	const currency = getCurrency( prices );
+	const priceCurrency = getCurrency( prices );
+
+	const name = __experimentalApplyCheckoutFilter( {
+		filterName: 'itemName',
+		defaultValue: initialName,
+		arg: {
+			extensions,
+			context: 'summary',
+		},
+		validation: ( value ) => typeof value === 'string',
+	} );
+
 	const regularPriceSingle = Dinero( {
 		amount: parseInt( prices.raw_prices.regular_price, 10 ),
 		precision: parseInt( prices.raw_prices.precision, 10 ),
 	} )
-		.convertPrecision( currency.minorUnit )
+		.convertPrecision( priceCurrency.minorUnit )
 		.getAmount();
-	const unconvertedLinePrice = Dinero( {
+	const priceSingle = Dinero( {
 		amount: parseInt( prices.raw_prices.price, 10 ),
 		precision: parseInt( prices.raw_prices.precision, 10 ),
+	} )
+		.convertPrecision( priceCurrency.minorUnit )
+		.getAmount();
+	const totalsCurrency = getCurrency( totals );
+
+	let lineTotal = parseInt( totals.line_total, 10 );
+	if ( DISPLAY_CART_PRICES_INCLUDING_TAX ) {
+		lineTotal += parseInt( totals.line_total_tax, 10 );
+	}
+	const totalsPrice = Dinero( {
+		amount: lineTotal,
+	} )
+		.convertPrecision( totals.currency_minor_unit )
+		.getAmount();
+	const subtotalPriceFormat = __experimentalApplyCheckoutFilter( {
+		filterName: 'subtotalPriceFormat',
+		defaultValue: '<price/>',
+		arg: {
+			lineItem: cartItem,
+		},
+		// Only accept strings.
+		validation: ( value ) =>
+			typeof value === 'string' && value.includes( '<price/>' ),
 	} );
-	const linePriceSingle = unconvertedLinePrice
-		.convertPrecision( currency.minorUnit )
-		.getAmount();
-	const linePrice = unconvertedLinePrice
-		.multiply( quantity )
-		.convertPrecision( currency.minorUnit )
-		.getAmount();
+
+	// Allow extensions to filter how the price is displayed. Ie: prepending or appending some values.
+	const productPriceFormat = __experimentalApplyCheckoutFilter( {
+		filterName: 'cartItemPrice',
+		defaultValue: '<price/>',
+		arg: {
+			cartItem,
+			block: 'checkout',
+		},
+		validation: ( value ) =>
+			typeof value === 'string' && value.includes( '<price/>' ),
+	} );
 
 	return (
 		<div className="wc-block-components-order-summary-item">
@@ -73,12 +116,13 @@ const OrderSummaryItem = ( { cartItem } ) => {
 					permalink={ permalink }
 				/>
 				<ProductPrice
-					currency={ currency }
-					price={ linePriceSingle }
+					currency={ priceCurrency }
+					price={ priceSingle }
 					regularPrice={ regularPriceSingle }
 					className="wc-block-components-order-summary-item__individual-prices"
 					priceClassName="wc-block-components-order-summary-item__individual-price"
 					regularPriceClassName="wc-block-components-order-summary-item__regular-individual-price"
+					format={ subtotalPriceFormat }
 				/>
 				{ showBackorderBadge ? (
 					<ProductBackorderBadge />
@@ -97,7 +141,11 @@ const OrderSummaryItem = ( { cartItem } ) => {
 				/>
 			</div>
 			<div className="wc-block-components-order-summary-item__total-price">
-				<ProductPrice currency={ currency } price={ linePrice } />
+				<ProductPrice
+					currency={ totalsCurrency }
+					format={ productPriceFormat }
+					price={ totalsPrice }
+				/>
 			</div>
 		</div>
 	);

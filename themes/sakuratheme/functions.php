@@ -218,3 +218,8 @@ function sakuratheme_block_assets() {
 }
 
 add_action( 'enqueue_block_assets', 'sakuratheme_block_assets' );
+
+/**
+ * Woo Commerce
+ */
+require get_template_directory(  ) . '/inc/woocommerce.php';
