@@ -156,7 +156,7 @@ function sakuratheme_scripts() {
 	wp_enqueue_script( 'bootstrap-script', get_template_directory_uri(  ) . '/vendor/bootstrap/js/bootstrap.min.js', array(), _S_VERSION, true );
 	
 	// My Styles
-	wp_enqueue_style( 'main-style', get_template_directory_uri(  ) . '/css/main.css' );
+	wp_enqueue_style( 'main-style', get_template_directory_uri(  ) . '/css/main.min.css' );
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

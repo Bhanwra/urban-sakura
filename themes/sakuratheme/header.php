@@ -30,11 +30,12 @@
 		<div class="container py-3">
 			<div class="row">
 				<div class="col-12 col-md-4">
-					<nav class="nav h-100 align-items-center">
-						<a href="#" class="nav-link">Shop</a>
-						<a href="#" class="nav-link">Categories</a>
-						<a href="#" class="nav-link">Sale</a>
-					</nav>
+					<?php
+					wp_nav_menu( array(
+						"menu" => "nav-menu-left",
+						"menu_class" => "nav-menu"
+					) );
+					?>
 				</div>
 				<div class="col-12 col-md-4 text-center d-flex justify-content-center align-items-center">
 					<div class="site-branding">
@@ -57,12 +58,18 @@
 					</div><!-- .site-branding -->
 				</div>
 				<div class="col-12 col-md-4">
-					<nav class="nav h-100 align-items-center justify-content-end">
-						<a href="<?php echo get_permalink( get_page_by_path( 'about' ) ); ?>" class="nav-link">About</a>
-						<a href="<?php echo get_permalink( get_page_by_path( 'contact' ) ); ?>" class="nav-link">Contact</a>
-						<a class="cart nav-link" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> – <?php echo WC()->cart->get_cart_total(); ?></a>
-						<a href="#" class="nav-link">Search</a>
-					</nav>
+					<?php
+
+					$NavMenuRight = wp_get_nav_menu_items( "nav-menu-right" );
+
+					echo "<ul class='nav-menu nav-menu-right'>";
+					foreach ($NavMenuRight as $MenuItem) {
+						echo ($MenuItem->title == "Cart") ? 
+							"<li class='menu-item'><a href='$MenuItem->url'>$MenuItem->title (". WC()->cart->get_cart_contents_count() .")</a></li>":
+							"<li class='menu-item'><a href='$MenuItem->url'>$MenuItem->title</a></li>";
+					}
+					?>
+					
 				</div>
 			</div>
 		</div>

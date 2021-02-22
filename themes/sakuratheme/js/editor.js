@@ -7,3 +7,7 @@ wp.blocks.registerBlockStyle( 'core/quote', {
 wp.domReady(() => {
     wp.blocks.unregisterBlockStyle( 'core/quote', 'large' );
 })
+
+wp.blocks.registerBlockStyle( 'core/paragraph', {
+    name: ''
+})
