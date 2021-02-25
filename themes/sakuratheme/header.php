@@ -90,4 +90,8 @@
 		<!-- #site-navigation -->
 	</header><!-- #masthead -->
 
-<div class="container site-wrapper">
+<div class="container my-5">
+	<h2><?php echo $pagename; ?></h2>
+</div>
+
+<div class="container site-wrapper p-0">

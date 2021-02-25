@@ -1,0 +1,45 @@
+.catalogue {
+
+    .catalogue-product {
+        position: relative;
+        overflow: hidden;
+
+        .catalogue-product-title {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            font-weight: 900;
+            font-size: 2.5em;
+            color: #fff !important;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding-bottom: 1em;
+            transition: ease-in-out 150ms;
+            mix-blend-mode: overlay;
+        }
+
+        .catalogue-product-image {
+            transition: ease-in-out 2s;
+        }
+
+        &:hover {
+
+            .catalogue-product-image {
+                transform: scale(1.25);
+            }
+
+            .catalogue-product-title {
+                padding-bottom: 2em;
+            }
+        }
+    }
+}

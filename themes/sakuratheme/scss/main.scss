@@ -1,17 +1,11 @@
-@import 'variables';
-@import 'font';
-@import 'paragraph';
-@import 'heading';
-@import 'list';
-@import 'blockquote';
-@import 'code';
-@import 'table';
-@import 'misc';
-@import 'cover';
-@import 'button';
+@import 'config/index';
+@import 'blocks/index';
 
 // wp_styles
-@import './wp/wp_nav_menu';
+@import 'wp/index';
+
+// components
+@import 'components/index';
 
 
 .page {
