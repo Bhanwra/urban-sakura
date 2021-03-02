@@ -781,6 +781,22 @@ article.product .tabs li a {
   letter-spacing: 0.1em;
 }
 
+.site-header .custom-logo {
+  max-width: 240px;
+  padding: 0.5em;
+}
+
+.site-header .menu-nav-menu-left-container {
+  height: 100%;
+}
+
+.site-header .nav-menu {
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .site-header .nav-menu .menu-item a {
   position: relative;
   display: block;

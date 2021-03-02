@@ -1,6 +1,17 @@
 .site-header {
 
+    .custom-logo {
+        max-width: 240px;
+        padding: 0.5em;
+    }
+
+    .menu-nav-menu-left-container {
+        height: 100%;
+    }
+
     .nav-menu {
+        height: 100%;
+        align-items: center;
 
         .menu-item {
 
