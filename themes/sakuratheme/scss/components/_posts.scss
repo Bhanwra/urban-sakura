@@ -1,0 +1,77 @@
+.all-posts {
+
+    .post-item {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        padding: 2em;
+        text-decoration: none;
+        margin-bottom: 1em;
+        border: solid thin transparent;
+        display: block;
+
+        &:hover {
+            border-color: map-get($map: $colorMap, $key: "primary");
+            .post-content {
+
+                .post-read-more {
+                    visibility: visible;
+                    margin-left: 0 !important;
+                }
+            }
+
+            .post-image {
+                box-shadow: map-get($map: $colorMap, $key: "secondary") 1em 1em 0px 0px,map-get($map: $colorMap, $key: "primary") -1em -1em 0px 0px,;
+            }
+        }
+
+        .post-content {
+            z-index: 2;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            .post-title {
+                margin: 0;
+                font-size: 1.25em;
+                font-weight: 400;
+            }
+
+            .post-read-more {
+                visibility: hidden;
+                margin-left: -2em !important;
+            }
+        }
+
+        .post-image {
+            background-size: cover;
+            background-position: center;
+            max-width: 80%;
+            margin: auto;
+            box-shadow: map-get($map: $colorMap, $key: "secondary") 0 0 0px 0px,map-get($map: $colorMap, $key: "primary") -0 -0 0px 0px,;
+            transform: linear 100ms;
+
+            &::after {
+                content: "";
+                display: block;
+                padding-bottom: 100%;
+            }
+        }
+    }
+}
+
+// single post (single.php)
+.single-post {
+
+    .post-thumbnail-custom {
+        min-height: 40vh;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 2em;
+    }
+
+    .post-thumbnail {
+        display: none;
+    }
+}

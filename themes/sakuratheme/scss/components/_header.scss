@@ -6,9 +6,7 @@
 
             a {
                 position: relative;
-                text-transform: uppercase;
                 display: block;
-                letter-spacing: 0.1em;
 
                 &::after {
                     content: "";

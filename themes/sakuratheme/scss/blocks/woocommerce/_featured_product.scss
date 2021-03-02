@@ -24,3 +24,12 @@
         }
     }
 }
+
+.woocommerce-error, .woocommerce-info, .woocommerce-message {
+    border-top-color: map-get($map: $colorMap, $key: "primary");
+    background-color: transparent;
+
+    &::before {
+        color: map-get($map: $colorMap, $key: "primary");
+    }
+}
