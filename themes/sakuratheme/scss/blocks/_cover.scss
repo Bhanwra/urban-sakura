@@ -16,3 +16,13 @@
         box-shadow: #0003 0px 0px 3px 0px;
     }
 }
+
+.wp-block-cover.is-style-feature-cover {
+    margin-bottom: 3em;
+
+    .wp-block-cover__inner-container {
+        background: none;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+}

@@ -90,8 +90,8 @@
 		<!-- #site-navigation -->
 	</header><!-- #masthead -->
 
-<div class="container my-5">
-	<h2><?php echo $pagename; ?></h2>
-</div>
-
-<div class="container site-wrapper p-0">
+	<?php 
+		if ( !is_home() && !is_front_page() ) {
+			echo "<h2 class='my-5'>$pagename</h2>";
+		}
+	?>

@@ -1,0 +1,108 @@
+article.product {
+    .entry-header {
+        display: none;
+    }
+
+    .entry-title {
+        text-align: left;
+    }
+
+    .woocommerce-loop-product__title {
+        text-align: left;
+        font-size: 1.25em !important;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .price * {
+        font-size: 1em !important;
+        color: map-get($map: $colorMap, $key: "dark");
+        font-weight: normal;
+    }
+
+    img {
+        margin-bottom: 0 !important;
+    }
+
+    .button {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    .onsale {
+        left: 0 !important;
+        right: auto !important;
+        top: 0 !important;
+        bottom: auto !important;
+        border-radius: 0 !important;
+        line-height: 1 !important;
+        height: auto !important;
+        margin: 1em !important;
+        min-height: auto !important;
+        padding: 0.5em !important;
+        font-weight: 300 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        background-color: map-get($map: $colorMap, $key: "secondary") !important;
+        color: map-get($map: $colorMap, $key: "dark") !important;
+    }
+
+    .cart {
+        display: flex;
+        align-items: center;
+
+        .qty {
+            border-radius: 0;
+            height: 100%;
+        }
+
+        .button {
+            width: auto;
+        }
+    }
+
+    .product_meta {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tabs {
+        border: none;
+        display: flex;
+        justify-content: center;
+
+        &::before {
+            content: none !important;
+        }
+
+        li {
+            background-color: transparent !important;
+            border-radius: 0 !important;
+            margin: 0 1em !important;
+            border: solid thin map-get($map: $colorMap, $key: "primary") !important;
+
+            &::before,
+            &::after {
+                content: none !important;
+            }
+
+            &.active, &:hover {
+                background-color: map-get($map: $colorMap, $key: "primary") !important;
+                
+                a {
+                    color: map-get($map: $colorMap, $key: "dark") !important;
+                }
+            }
+
+            a {
+                color: map-get($map: $colorMap, $key: "primary") !important;
+                font-weight: 400 !important;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+            }
+        }
+    }
+}

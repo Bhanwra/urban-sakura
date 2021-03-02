@@ -1,12 +1,34 @@
 .wp-block-button {
 
     .wp-block-button__link {
-        color: white !important;
+        color: map-get($map: $colorMap, $key: "dark") !important;
+        font-weight: 300 !important;
         border-radius: 0;
         margin: 0.25rem 0;
         font-size: 1rem;
         text-transform: uppercase;
         letter-spacing: 3px;
-        font-weight: lighter;
+        background-color: map-get($map: $colorMap, $key: "primary");
+
+        &:hover {
+            background-color: darken($color: map-get($colorMap, "primary"), $amount: 15);
+        }
+    }
+}
+
+button,
+input[type="submit"],
+.button {
+    color: map-get($map: $colorMap, $key: "dark") !important;
+    font-weight: 300 !important;
+    border-radius: 0 !important;
+    margin: 0.25rem 0 !important;
+    font-size: 1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 3px !important;
+    background-color: map-get($map: $colorMap, $key: "primary") !important;
+    
+    &:hover {
+        background-color: darken($color: map-get($colorMap, "primary"), $amount: 15) !important; 
     }
 }

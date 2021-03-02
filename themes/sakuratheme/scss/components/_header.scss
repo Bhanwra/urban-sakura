@@ -1,0 +1,36 @@
+.site-header {
+
+    .nav-menu {
+
+        .menu-item {
+
+            a {
+                position: relative;
+                text-transform: uppercase;
+                display: block;
+                letter-spacing: 0.1em;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    width: 0%;
+                    margin: auto;
+                    border-bottom: solid thin;
+                    background-color: map-get($map: $colorMap, $key: "dark");
+                    display: block;
+                    transition: linear 100ms;
+                }
+
+                &:hover {
+
+                    &::after {
+                        width: 80%;
+                    }
+                }
+            }
+        }
+    }
+}

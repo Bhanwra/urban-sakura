@@ -9,6 +9,21 @@
 
 
 .page {
-    background-color: #f9f9f9;
     margin-bottom: 0;
+    background-color: #F9FBFE;
+}
+
+* {
+    transition: 100ms linear;
+    
+}
+
+::selection {
+    background-color: map-get($map: $colorMap, $key: "primary") !important;
+    color: map-get($map: $colorMap, $key: "dark") !important;
+}
+
+::-moz-selection {
+    background-color: map-get($map: $colorMap, $key: "primary") !important;
+    color: map-get($map: $colorMap, $key: "dark") !important;
 }

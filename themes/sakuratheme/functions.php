@@ -143,6 +143,11 @@ function sakuratheme_widgets_init() {
 add_action( 'widgets_init', 'sakuratheme_widgets_init' );
 
 /**
+ * Woo Commerce
+ */
+require get_template_directory(  ) . '/inc/woocommerce.php';
+
+/**
  * Enqueue scripts and styles.
  */
 function sakuratheme_scripts() {
@@ -218,8 +223,3 @@ function sakuratheme_block_assets() {
 }
 
 add_action( 'enqueue_block_assets', 'sakuratheme_block_assets' );
-
-/**
- * Woo Commerce
- */
-require get_template_directory(  ) . '/inc/woocommerce.php';

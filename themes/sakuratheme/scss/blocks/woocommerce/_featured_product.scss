@@ -1,0 +1,26 @@
+.wc-block-featured-product {
+
+    &.is-style-best-seller {
+        background: transparent;
+        background-image: none !important;
+        min-height: auto !important;
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        &::before {
+            content: none;
+        }
+
+        .wc-block-featured-product__title,
+        .wc-block-featured-product__description,
+        .wc-block-featured-product__price,
+        .wc-block-featured-product__link .wp-block-button {
+            color: map-get($map: $colorMap, $key: "dark");
+        }
+
+        .wc-block-featured-product__title {
+            font-size: 1.5em;
+        }
+    }
+}
