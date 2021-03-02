@@ -14,7 +14,7 @@ get_header();
 
 		<?php
 		while ( have_posts() ) :
-			if ( has_post_thumbnail() ) {
+			if ( has_post_thumbnail() && !is_product() ) {
 				echo '<div class="post-thumbnail-custom" style="background-image: url('. get_the_post_thumbnail_url( ) .');"></div>';
 			}
 			the_post();

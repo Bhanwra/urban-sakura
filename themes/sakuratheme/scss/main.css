@@ -599,7 +599,7 @@ p {
   padding: 0.5em;
 }
 
-.shop .woocommerce .product .woocommerce-loop-product__title {
+.woocommerce .products .product .woocommerce-loop-product__title {
   text-align: left;
   font-size: 1.25em !important;
   max-width: 100%;
@@ -608,23 +608,23 @@ p {
   text-overflow: ellipsis;
 }
 
-.shop .woocommerce .product .price * {
+.woocommerce .products .product .price * {
   font-size: 1em !important;
   color: #32373c;
   font-weight: normal;
 }
 
-.shop .woocommerce .product img {
+.woocommerce .products .product img {
   margin-bottom: 0 !important;
 }
 
-.shop .woocommerce .product .button {
+.woocommerce .products .product .button {
   width: 100%;
   display: block;
   text-align: center;
 }
 
-.shop .woocommerce .product .onsale {
+.woocommerce .products .product .onsale {
   left: 0 !important;
   right: auto !important;
   top: 0 !important;
@@ -642,22 +642,22 @@ p {
   color: #32373c !important;
 }
 
-.shop .woocommerce .woocommerce-pagination .page-numbers {
+.woocommerce .products .woocommerce-pagination .page-numbers {
   border: none;
 }
 
-.shop .woocommerce .woocommerce-pagination .page-numbers li {
+.woocommerce .products .woocommerce-pagination .page-numbers li {
   margin: 0 1em;
   border: none;
 }
 
-.shop .woocommerce .woocommerce-pagination .page-numbers li .page-numbers {
+.woocommerce .products .woocommerce-pagination .page-numbers li .page-numbers {
   min-width: 3em !important;
   background-color: transparent !important;
   border: solid thin #D8E6BC !important;
 }
 
-.shop .woocommerce .woocommerce-pagination .page-numbers li .page-numbers:hover, .shop .woocommerce .woocommerce-pagination .page-numbers li .page-numbers.current {
+.woocommerce .products .woocommerce-pagination .page-numbers li .page-numbers:hover, .woocommerce .products .woocommerce-pagination .page-numbers li .page-numbers.current {
   background-color: #D8E6BC !important;
   color: #32373c !important;
 }

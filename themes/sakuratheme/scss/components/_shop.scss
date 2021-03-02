@@ -1,70 +1,67 @@
-.shop {
+.woocommerce .products {
 
-    .woocommerce {
-
-        .product {
-            .woocommerce-loop-product__title {
-                text-align: left;
-                font-size: 1.25em !important;
-                max-width: 100%;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
-
-            .price * {
-                font-size: 1em !important;
-                color: map-get($map: $colorMap, $key: "dark");
-                font-weight: normal;
-            }
-
-            img {
-                margin-bottom: 0 !important;
-            }
-
-            .button {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-
-            .onsale {
-                left: 0 !important;
-                right: auto !important;
-                top: 0 !important;
-                bottom: auto !important;
-                border-radius: 0 !important;
-                line-height: 1 !important;
-                height: auto !important;
-                margin: 1em !important;
-                min-height: auto !important;
-                padding: 0.5em !important;
-                font-weight: 300 !important;
-                text-transform: uppercase !important;
-                letter-spacing: 0.1em !important;
-                background-color: map-get($map: $colorMap, $key: "secondary") !important;
-                color: map-get($map: $colorMap, $key: "dark") !important;
-            }
+    .product {
+        .woocommerce-loop-product__title {
+            text-align: left;
+            font-size: 1.25em !important;
+            max-width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
 
-        .woocommerce-pagination {
+        .price * {
+            font-size: 1em !important;
+            color: map-get($map: $colorMap, $key: "dark");
+            font-weight: normal;
+        }
 
-            .page-numbers {
+        img {
+            margin-bottom: 0 !important;
+        }
+
+        .button {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        .onsale {
+            left: 0 !important;
+            right: auto !important;
+            top: 0 !important;
+            bottom: auto !important;
+            border-radius: 0 !important;
+            line-height: 1 !important;
+            height: auto !important;
+            margin: 1em !important;
+            min-height: auto !important;
+            padding: 0.5em !important;
+            font-weight: 300 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.1em !important;
+            background-color: map-get($map: $colorMap, $key: "secondary") !important;
+            color: map-get($map: $colorMap, $key: "dark") !important;
+        }
+    }
+
+    .woocommerce-pagination {
+
+        .page-numbers {
+            border: none;
+
+            li {
+                margin: 0 1em;
                 border: none;
 
-                li {
-                    margin: 0 1em;
-                    border: none;
+                .page-numbers {
+                    min-width: 3em !important;
+                    background-color: transparent !important;
+                    border: solid thin map-get($map: $colorMap, $key: "secondary") !important;
 
-                    .page-numbers {
-                        min-width: 3em !important;
-                        background-color: transparent !important;
-                        border: solid thin map-get($map: $colorMap, $key: "secondary") !important;
-
-                        &:hover, &.current {
-                            background-color: map-get($map: $colorMap, $key: "secondary") !important;
-                            color: map-get($map: $colorMap, $key: "dark") !important;
-                        }
+                    &:hover, &.current {
+                        background-color: map-get($map: $colorMap, $key: "secondary") !important;
+                        color: map-get($map: $colorMap, $key: "dark") !important;
                     }
                 }
             }
