@@ -21,7 +21,7 @@
             }
 
             .post-image {
-                box-shadow: map-get($map: $colorMap, $key: "secondary") 1em 1em 0px 0px,map-get($map: $colorMap, $key: "primary") -1em -1em 0px 0px,;
+                box-shadow: map-get($map: $colorMap, $key: "secondary") 1em 1em 0px 0px,map-get($map: $colorMap, $key: "primary") -1em -1em 0px 0px;
             }
         }
 

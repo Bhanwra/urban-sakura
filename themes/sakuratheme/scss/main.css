@@ -951,6 +951,57 @@ article.product .tabs li a {
   display: none;
 }
 
+.highlight-card {
+  width: 60%;
+  margin: 1em auto;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.highlight-card::before {
+  content: "";
+  padding-bottom: 100%;
+  display: block;
+}
+
+.highlight-card .highlight-card-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+}
+
+.highlight-card .highlight-card-content h5 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.highlight-card:hover {
+  -webkit-box-shadow: #D8E6BC 1em 1em 0px 0px, #32373c -1em -1em 0px 0px;
+          box-shadow: #D8E6BC 1em 1em 0px 0px, #32373c -1em -1em 0px 0px;
+}
+
+.highlight-card:hover .highlight-card-content {
+  -webkit-backdrop-filter: blur(0.5em);
+          backdrop-filter: blur(0.5em);
+  background-color: #fff9;
+  opacity: 1;
+}
+
 .page {
   margin-bottom: 0;
   background-color: #F9FBFE;

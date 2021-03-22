@@ -15,6 +15,46 @@
 
 	<footer id="colophon" class="site-footer mt-0">
 
+		<div class="container mb-4">
+			<div class="row">
+				<div class="col-12">
+					<h4 class="h5">Highlights</h4>
+				</div>
+				<?php
+					// fetching 3 most recent highlights
+					$highlightPosts = new WP_Query(array(
+						"post_type" => "sakura_highlight"
+					));
+
+					// if found
+					if ( $highlightPosts->have_posts() ) {
+						// looping through the posts
+						while ( $highlightPosts->have_posts() ) {
+							$highlightPosts->the_post();
+
+							// getting variables
+							// $thumbnail = get_the_post_thumbnail( "large" );
+							$thumbnail = get_the_post_thumbnail_url( $post, "large" );
+							$permalink = get_post_permalink( $post );
+
+							// rendering in HTML
+							?>
+							<div class="col-12 col-sm-4 text-center">
+								<a href="<?php echo $permalink; ?>" class="highlight-card" style="background-image: url('<?php echo $thumbnail; ?>')">
+									<div class="highlight-card-content">
+										<h5><?php echo get_the_title(); ?></h5>
+									</div>
+								</a>
+							</div>
+							<?php
+						}
+					} else {
+						// no posts found
+					}
+				?>
+			</div>
+		</div>
+
 		<div class="container">
 			<div class="row">
 				<div class="col-12 col-md-8 text-center">
