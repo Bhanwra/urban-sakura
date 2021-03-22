@@ -223,3 +223,26 @@ function sakuratheme_block_assets() {
 }
 
 add_action( 'enqueue_block_assets', 'sakuratheme_block_assets' );
+
+/**
+ * Custom Post - Highlight
+ */
+function custom_post_highlight() {
+	// registering a custom post called "Sakura Highlight"
+	register_post_type( 'sakura_highlight', 
+		array(
+			'labels' => array(
+				'name' => __('Sakura Highlights', 'textdomain'),
+				'singular_name' => __('Sakura Highlight', 'textdomain')
+			),
+			'public' => true,
+			// enables archiving
+			'has_archive' => true,
+			// adding Gootenberg Block Editor
+			'show_in_rest' => true,
+            'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'permalinks', 'featured_image')
+		)
+	);
+}
+
+add_action( 'init', 'custom_post_highlight' );

@@ -642,22 +642,22 @@ p {
   color: #32373c !important;
 }
 
-.woocommerce .products .woocommerce-pagination .page-numbers {
+.woocommerce-pagination .page-numbers {
   border: none;
 }
 
-.woocommerce .products .woocommerce-pagination .page-numbers li {
+.woocommerce-pagination .page-numbers li {
   margin: 0 1em;
   border: none;
 }
 
-.woocommerce .products .woocommerce-pagination .page-numbers li .page-numbers {
+.woocommerce-pagination .page-numbers li .page-numbers {
   min-width: 3em !important;
   background-color: transparent !important;
   border: solid thin #D8E6BC !important;
 }
 
-.woocommerce .products .woocommerce-pagination .page-numbers li .page-numbers:hover, .woocommerce .products .woocommerce-pagination .page-numbers li .page-numbers.current {
+.woocommerce-pagination .page-numbers li .page-numbers:hover, .woocommerce-pagination .page-numbers li .page-numbers.current {
   background-color: #D8E6BC !important;
   color: #32373c !important;
 }
@@ -907,9 +907,47 @@ article.product .tabs li a {
   background-size: cover;
   background-position: center;
   margin-bottom: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.single-post .post-thumbnail-custom .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.single-post .post-thumbnail-custom .post-thumbnail-subtitle {
+  background-color: #D8E6BC;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.single-post .post-thumbnail-custom .post-thumbnail-title {
+  background-color: #CDC7E5;
+  padding: 0.5em 1em;
 }
 
 .single-post .post-thumbnail {
+  display: none;
+}
+
+.sakura_highlight .entry-header {
   display: none;
 }
 

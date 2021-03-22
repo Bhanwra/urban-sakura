@@ -91,7 +91,7 @@
 	</header><!-- #masthead -->
 
 	<?php 
-		if ( !is_home() && !is_front_page() ) {
+		if ( !is_home() && !is_front_page() && get_post_type() != "sakura_highlight" ) {
 			echo "<h2 class='my-5'>$pagename</h2>";
 		}
 	?>
