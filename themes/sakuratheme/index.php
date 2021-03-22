@@ -31,8 +31,10 @@ get_header();
 			?>
 			<div class="row all-posts my-5">
 				<?php
+					// getting all posts
 					foreach (get_posts() as $key => $post) {
 						?>
+						<!-- populating posts -->
 						<div class="col-12">
 							<a class="post-item" href="<?php echo get_permalink( $post ); ?>">
 								<div class="row">

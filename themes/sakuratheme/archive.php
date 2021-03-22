@@ -8,7 +8,11 @@
  */
 
 get_header();
+
+echo 'this is archive.php';
 ?>
+
+
 
 	<main id="primary" class="site-main">
 
@@ -20,7 +24,6 @@ get_header();
 				the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
-
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
