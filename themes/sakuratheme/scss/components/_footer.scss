@@ -22,11 +22,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         opacity: 0;
 
         h5 {
             margin: 0;
             font-weight: bold;
+        }
+
+        p {
+            max-height: 50%;
+            overflow: hidden;
+            margin: 1rem 1rem 0;
+            font-size: 0.75em;
         }
     }
 

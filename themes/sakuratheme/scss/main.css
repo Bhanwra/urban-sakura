@@ -982,12 +982,23 @@ article.product .tabs li a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   opacity: 0;
 }
 
 .highlight-card .highlight-card-content h5 {
   margin: 0;
   font-weight: bold;
+}
+
+.highlight-card .highlight-card-content p {
+  max-height: 50%;
+  overflow: hidden;
+  margin: 1rem 1rem 0;
+  font-size: 0.75em;
 }
 
 .highlight-card:hover {

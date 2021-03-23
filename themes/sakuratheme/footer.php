@@ -43,6 +43,7 @@
 								<a href="<?php echo $permalink; ?>" class="highlight-card" style="background-image: url('<?php echo $thumbnail; ?>')">
 									<div class="highlight-card-content">
 										<h5><?php echo get_the_title(); ?></h5>
+										<p><?php echo get_the_excerpt(); ?></p>
 									</div>
 								</a>
 							</div>
